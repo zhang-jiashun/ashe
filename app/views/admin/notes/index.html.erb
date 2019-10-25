@@ -1,1 +1,12 @@
-<h1>笔记列表</h1>
+<% title = '笔记列表' %>
+<% content_for :title do %>
+  <% title %>
+<% end %>
+
+<h1><%= title %></h1>
+
+<ul>
+  <% @notes.each do |note| %>
+    <li><%= note.title %></li>
+  <% end %>
+</ul>
