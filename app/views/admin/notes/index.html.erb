@@ -9,8 +9,20 @@
 
 <%= link_to '新建笔记', new_admin_note_path %>
 
-<ul>
+<table>
+  <thead>
+  <tr>
+    <th>标题</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
   <% @notes.each do |note| %>
-    <li><%= note.title %></li>
+    <tr>
+      <td><%= link_to note.title, [:admin, note] %></td>
+      <td><%= link_to '编辑', edit_admin_note_path(note) %></td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>

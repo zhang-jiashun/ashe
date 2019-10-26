@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<% title = @note.title %>
+<% content_for :title do %>
+  <% title %>
+<% end %>
+
+<%= link_to '返回', admin_notes_path %>
+
+<h1><%= title %></h1>
+
+<article>
+  <%= @note.body.html_safe %>
+</article>
