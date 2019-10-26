@@ -1,6 +1,6 @@
 module Admin
   class NotesController < ApplicationController
-    before_action :set_note, only: [:show, :edit, :update]
+    before_action :set_note, only: [:show, :edit, :update, :destroy]
 
     def index
       @notes = Note.all
@@ -16,8 +16,7 @@ module Admin
     def create
       @note = Note.new(note_params)
       if @note.save
-        flash[:notice] = '新建成功！'
-        redirect_to admin_notes_path
+        redirect_to [:admin, @note], notice: '新建成功！'
       else
         flash[:notice] = @note.errors.full_messages[0]
         render :new
@@ -29,11 +28,15 @@ module Admin
 
     def update
       if @note.update(note_params)
-        flash[:notice] = '更新成功！'
-        redirect_to [:admin, @note]
+        redirect_to [:admin, @note], notice: '更新成功！'
       else
         render :edit
       end
+    end
+
+    def destroy
+      @note.destroy
+      redirect_to admin_notes_url, notice: '删除成功！'
     end
 
     private
