@@ -1,9 +1,13 @@
+<p id="notice"><%= notice %></p>
+
 <% title = '笔记列表' %>
 <% content_for :title do %>
   <% title %>
 <% end %>
 
 <h1><%= title %></h1>
+
+<%= link_to '新建笔记', new_admin_note_path %>
 
 <ul>
   <% @notes.each do |note| %>

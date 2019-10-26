@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<% title = '新建笔记' %>
+<% content_for :title do %>
+  <% title %>
+<% end %>
+<h1><%= title %></h1>
+
+<%= form_for [:admin, @note] do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+  <%= f.submit '新建' %>
+<% end %>
+
+<br>
+<%= link_to '返回', admin_notes_path %>
