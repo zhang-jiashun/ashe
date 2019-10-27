@@ -1,4 +1,6 @@
 class NotesController < ApplicationController
+  skip_before_action :authenticate_author!
+
   def index
     @notes = Note.all
   end

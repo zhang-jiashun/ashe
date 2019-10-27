@@ -1,5 +1,7 @@
 module Admin
   class SessionsController < ApplicationController
+    skip_before_action :authenticate_author!, only: [:new, :create]
+
     def new
     end
 
