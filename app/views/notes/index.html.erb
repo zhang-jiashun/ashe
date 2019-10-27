@@ -1,0 +1,9 @@
+<% content_for :title do %>
+  Note
+<% end %>
+
+<ul>
+  <% @notes.each do |note| %>
+    <li><%= link_to note.title, note %></li>
+  <% end %>
+</ul>

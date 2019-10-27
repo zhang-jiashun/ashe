@@ -1,0 +1,11 @@
+<% title = @note.title %>
+
+<% content_for :title do %>
+  <%= title %>
+<% end %>
+
+<h1><%= title %></h1>
+
+<article>
+  <%= @note.content %>
+</article>
