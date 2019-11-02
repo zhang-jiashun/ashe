@@ -36,3 +36,23 @@
   </div>
   <%= form.submit '发表', class: 'button-primary' %>
 <% end %>
+
+<script>
+  (function () {
+    const rememberInputs = [
+      {selector: '#comment_commenter', key: 'commenter'},
+      {selector: '#comment_email', key: 'email'}
+    ]
+
+    const prefixKey = 'note_comment_'
+
+    rememberInputs.forEach(rememberInput => {
+      const input = document.querySelector(rememberInput.selector)
+      const key = prefixKey + rememberInput.key
+      input.onblur = function () {
+        localStorage.setItem(key, input.value)
+      }
+      input.value = localStorage.getItem(key)
+    })
+  })()
+</script>
