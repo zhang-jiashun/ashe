@@ -9,3 +9,30 @@
 <article>
   <%= @note.content %>
 </article>
+
+<hr>
+
+<h2>评论</h2>
+<% @note.comments.each do |comment| %>
+  <strong><%= comment.commenter %>：</strong>
+  <p><%= comment.content %></p>
+<% end %>
+
+<hr>
+
+<h2>发表评论：</h2>
+<%= form_with(model: [@note, @note.comments.build], local: true) do |form| %>
+  <div>
+    <%= form.label :content, '评论' %>
+    <%= form.text_area :content, required: true %>
+  </div>
+  <div>
+    <%= form.label :commenter, '姓名' %>
+    <%= form.text_field :commenter, required: true %>
+  </div>
+  <div>
+    <%= form.label :email, '电子邮箱' %>
+    <%= form.email_field :email, required: true %>
+  </div>
+  <%= form.submit '发表', class: 'button-primary' %>
+<% end %>
