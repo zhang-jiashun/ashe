@@ -5,8 +5,8 @@ class CreateNotes < ActiveRecord::Migration[6.0]
       t.text :content
 
       t.timestamps
-    end
 
-    add_index :notes, :title, unique: true
+      t.index :title, unique: true
+    end
   end
 end
